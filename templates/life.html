@@ -18,3 +18,7 @@
     {% endfor %}
 </table>
 {% endblock %}
+{% block scripts %}
+    {{ super() }}
+    <script>setInterval(() => window.location.reload(), 1000)</script>
+{% endblock %}
