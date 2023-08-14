@@ -17,6 +17,7 @@ class GameOfLife(metaclass=SingletonsMeta):
         self.height = 20
         self.generation_count = 0
         self.world = self.__generate_field()
+        self.old_world = deepcopy(self.world)
 
     def __generate_field(self):
         return [[0 for _ in range(self.width)] for _ in range(self.height)]
@@ -42,6 +43,7 @@ class GameOfLife(metaclass=SingletonsMeta):
         self.generation_count = 0
 
     def get_new_generation(self):
+        self.old_world = deepcopy(self.world)
         new_world = deepcopy(self.world)
         for row in range(self.height):
             for col in range(self.width):

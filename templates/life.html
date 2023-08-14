@@ -3,13 +3,15 @@
 {% block app_content %}
 <a href="{{ url_for('index') }}" class="btn btn-warning home">Home</a>
 <a href="{{ url_for('life') }}" class="btn btn-info refresh">Refresh</a>
-
+<div class="counter">{{ game.generation_count }}</div>
 <table class="world">
-    {% for row in game.world %}
+    {% for row in range(game.world|length) %}
         <tr>
-            {% for item in row %}
-                {% if item == 1 %}
+            {% for col in range(game.world[0]|length) %}
+                {% if game.world[row][col] == 1 %}
                     <td class="cell living-cell"></td>
+                {% elif game.world[row][col] == 0 and game.old_world[row][col] == 1 %}
+                    <td class="cell dead-cell" ></td>
                 {% else %}
                     <td class="cell"></td>
                 {% endif %}

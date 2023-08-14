@@ -16,9 +16,10 @@ def index():
 @app.route('/life')
 def life():
     game = GameOfLife()
+    render = render_template('life.html', game=game)
     game.get_new_generation()
-    return render_template('life.html', game=game)
+    return render
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
