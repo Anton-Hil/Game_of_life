@@ -8,8 +8,8 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
 def index():
-    GameOfLife()
-    GameOfLife.populate_world()
+    game = GameOfLife()
+    game.populate_world()
     return render_template('index.html')
 
 
