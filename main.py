@@ -9,6 +9,7 @@ app = Flask(__name__)
 @app.route('/index')
 def index():
     game = GameOfLife()
+    game.get_new_world()
     game.populate_world()
     return render_template('index.html')
 
