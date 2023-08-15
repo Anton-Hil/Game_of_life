@@ -44,7 +44,7 @@ class GameOfLife(metaclass=SingletonsMeta):
 
     def get_new_generation(self):
         self.old_world = deepcopy(self.world)
-        new_world = deepcopy(self.world)
+        new_world = self.__generate_field()
         for row in range(self.height):
             for col in range(self.width):
                 neighbours = self.__get_neighbours((row, col))
